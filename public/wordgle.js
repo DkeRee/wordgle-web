@@ -96,6 +96,7 @@ await init();
 					if (playButton.children.length == 0){
 						playButton.textContent = "RETURN";
 						canUseKeyboard = true;
+						playButton.blur();
 						playGame("bp");
 						clearInterval(interval);
 					}
@@ -109,6 +110,7 @@ await init();
 				var interval = setInterval(() => {
 					if (playButton.children.length == 0){
 						playButton.textContent = "PLAY";
+						playButton.blur();
 						playGame("b");
 						clearInterval(interval);
 					}
