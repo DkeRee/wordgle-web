@@ -1,0 +1,1 @@
+C:\Users\dke11\OneDrive\Desktop\wordgle-web\target\wasm32-unknown-unknown\release\wordgle_web.wasm: C:\Users\dke11\OneDrive\Desktop\wordgle-web\src\lib.rs C:\Users\dke11\OneDrive\Desktop\wordgle-web\src\words.txt

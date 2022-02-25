@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>Wordgle</title>
+		<link rel = "icon" href = "wordgle-favicon.png">
+		<meta property = "og:title" content = "Wordgle">
+    	<meta property = "og:image" content = "https://wordgle.dkeree.repl.co/wordgle-favicon.png">
+    	<meta property = "og:description" content = "Play against Wordgle, a wordle engine I developed!">
+		<link rel="preconnect" href="https://fonts.gstatic.com">
+		<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300&display=swap" rel="stylesheet">
+		<link href = "style.css" rel = "stylesheet" type = "text/css">
+		<script src = "https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+		<script src = "words.js"></script>
+	</head>
+	<body>
+        <div id = "website-widget">
+            <img id = "pfp" src = "https://dkeree.repl.co/pfp.png">
+            <script>
+            	const website = document.getElementById("website-widget");
+				website.addEventListener("click", () => {
+					window.open("https://dkeree.repl.co/", "_blank");
+				});
+            </script>
+        </div>
+		<div id = "notif-wrapper">
+			<h1 id = "notif"></h1>
+		</div>
+		<div id = "header-container">
+			<div id = "header-wrapper">
+				<div class = "letter-wrapper header-glow"><h1 class = "letter">W</h1></div>
+				<div class = "letter-wrapper header-glow"><h1 class = "letter">O</h1></div>
+				<div class = "letter-wrapper header-glow"><h1 class = "letter">R</h1></div>
+				<div class = "letter-wrapper header-glow"><h1 class = "letter">D</h1></div>
+				<div class = "letter-wrapper header-glow"><h1 class = "letter">G</h1></div>
+				<div class = "letter-wrapper header-glow"><h1 class = "letter">L</h1></div>
+				<div class = "letter-wrapper header-glow"><h1 class = "letter">E</h1></div>
+			</div>
+		</div>
+		<div id = "main-content"></div>
+		<div id = "button-wrapper">
+			<button id = "play">PLAY</button>
+			<script>
+				const button = document.getElementById("play");
+
+				button.addEventListener("click", e => {
+					const ripple = document.createElement("span");
+					const rect = button.getBoundingClientRect();
+
+					ripple.setAttribute("class", "ripple");
+					ripple.style.left = `${e.clientX - rect.x}px`;
+					ripple.style.top = `${e.clientY - rect.y}px`;
+					button.prepend(ripple);
+
+					setTimeout(() => {
+						ripple.remove();
+					}, 1000);
+				});
+			</script>
+		</div>
+		<div id = "credits-container">
+			<h1 id = "credits-header">Credits</h1>
+			<h1 class = "credit">EpicRaisin - Thanks for the Favicon!
+		</div>
+		<script type = "module" src = "wordgle.js"></script>
+	</body>
+</html>
