@@ -298,10 +298,19 @@ await init();
 
 		guess(userGuess, player) {
 			const guessMEM = [];
+			const appearances = {};
 			class Character {
 				constructor(letter, state) {
 					this.letter = letter;
 					this.state = state;
+				}
+			}
+
+			for (var i = 0; i < userGuess.length; i++){
+				if (appearances[userGuess[i]]){
+					appearances[userGuess[i]]++;
+				} else {
+					appearances[userGuess[i]] = 1;
 				}
 			}
 
@@ -310,8 +319,9 @@ await init();
 					for (var i = 0; i < userGuess.length; i++){
 						if (userGuess[i] == this.word[i]){
 							guessMEM.push(new Character(userGuess[i], 2));
-						} else if (this.word.includes(userGuess[i]) && validateYellow(userGuess[i], userGuess, this.word)){
+						} else if (this.word.includes(userGuess[i]) && appearances[userGuess[i]] > 0){
 							guessMEM.push(new Character(userGuess[i], 1));
+							appearances[userGuess[i]]--;
 						} else {
 							guessMEM.push(new Character(userGuess[i], 0));
 						}
@@ -322,19 +332,6 @@ await init();
 			} else {
 				return false;
 			}
-		}
-	}
-
-	function validateYellow(letter, guessedWord, word){
-		var noGreen = "";
-		for (var i = 0; i < guessedWord.length; i++){
-			if (guessedWord[i] !== word[i]) noGreen += word[i];
-		}
-
-		if (noGreen.includes(letter)){
-			return true;
-		} else {
-			return false;
 		}
 	}
 

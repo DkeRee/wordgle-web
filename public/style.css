@@ -24,7 +24,7 @@ body {
 
 #credits-container {
 	background-color: #36393E;
-	position: absolute;
+	position: fixed;
 	right: 0;
 	bottom: 0;
 	border-radius: 12px 0px 0px 0px;
