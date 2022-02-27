@@ -306,15 +306,19 @@ await init();
 				}
 			}
 
+			//number of times we encounter each word
 			for (var i = 0; i < this.word.length; i++){
 				if (appearances[this.word[i]]){
 					appearances[this.word[i]]++;
 				} else {
-					if (this.players[player].guesses.length == 0){
-						appearances[this.word[i]] = 1;
-					} else if (this.players[player].guesses[this.players[player].guesses.length - 1][i].state !== 2){
-						appearances[this.word[i]] = 1;
-					}
+					appearances[this.word[i]] = 1;
+				}
+			}
+
+			//filter out green
+			for (var i = 0; i < userGuess.length; i++){
+				if (userGuess[i] == this.word[i]){
+					appearances[userGuess[i]]--;
 				}
 			}
 
@@ -329,6 +333,8 @@ await init();
 						} else {
 							guessMEM.push(new Character(userGuess[i], 0));
 						}
+						//console.log(userGuess)
+						//console.log(appearances)
 					}
 					this.players[player].guesses.push(guessMEM);
 					return true;
