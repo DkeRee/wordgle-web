@@ -306,14 +306,14 @@ await init();
 				}
 			}
 
-			for (var i = 0; i < userGuess.length; i++){
-				if (appearances[userGuess[i]]){
-					appearances[userGuess[i]]++;
+			for (var i = 0; i < this.word.length; i++){
+				if (appearances[this.word[i]]){
+					appearances[this.word[i]]++;
 				} else {
 					if (this.players[player].guesses.length == 0){
-						appearances[userGuess[i]] = 1;
+						appearances[this.word[i]] = 1;
 					} else if (this.players[player].guesses[this.players[player].guesses.length - 1][i].state !== 2){
-						appearances[userGuess[i]] = 1;
+						appearances[this.word[i]] = 1;
 					}
 				}
 			}
