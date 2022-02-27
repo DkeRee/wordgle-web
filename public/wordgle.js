@@ -310,7 +310,11 @@ await init();
 				if (appearances[userGuess[i]]){
 					appearances[userGuess[i]]++;
 				} else {
-					appearances[userGuess[i]] = 1;
+					if (this.players[player].guesses.length == 0){
+						appearances[userGuess[i]] = 1;
+					} else if (this.players[player].guesses[this.players[player].guesses.length - 1][i].state !== 2){
+						appearances[userGuess[i]] = 1;
+					}
 				}
 			}
 
