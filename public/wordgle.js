@@ -333,8 +333,6 @@ await init();
 						} else {
 							guessMEM.push(new Character(userGuess[i], 0));
 						}
-						//console.log(userGuess)
-						//console.log(appearances)
 					}
 					this.players[player].guesses.push(guessMEM);
 					return true;
