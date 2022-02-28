@@ -79,9 +79,10 @@ await init();
 					}
 				}
 			} else {
-				if (gameCache.players.p.guessThink.length < 5 && validateKey(e.key)) {
-					gameCache.players.p.guessThink += e.key;
-					segment[gameCache.players.p.guessThink.length - 1].children[0].textContent = e.key.toUpperCase();
+				const key = e.key.toLowerCase();
+				if (gameCache.players.p.guessThink.length < 5 && validateKey(key)) {
+					gameCache.players.p.guessThink += key;
+					segment[gameCache.players.p.guessThink.length - 1].children[0].textContent = key.toUpperCase();
 				}
 			}
 		}
