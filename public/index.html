@@ -11,17 +11,36 @@
 		<link href = "style.css" rel = "stylesheet" type = "text/css">
 		<script src = "https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 		<script src = "words.js"></script>
+		<script>
+			document.addEventListener('DOMContentLoaded', () => {
+				const html = document.querySelector("html");
+				window.onresize = function() {
+				    const wsc = window.innerWidth / html.offsetWidth;
+				    const hsc = window.innerHeight / html.offsetHeight;
+
+				    var scale;
+				    if (hsc > 1) {
+				    	scale = 1;
+				    } else {
+						scale = Math.min(wsc, hsc);
+				    }
+
+				    html.style.zoom = scale;
+				};
+				window.onresize();
+			});
+		</script>
 	</head>
 	<body>
-        <div id = "website-widget">
-            <img id = "pfp" src = "https://dkeree.repl.co/pfp.png">
-            <script>
-            	const website = document.getElementById("website-widget");
+	    <div id = "website-widget">
+	        <img id = "pfp" src = "https://dkeree.repl.co/pfp.png">
+	        <script>
+	        	const website = document.getElementById("website-widget");
 				website.addEventListener("click", () => {
 					window.open("https://dkeree.repl.co/", "_blank");
 				});
-            </script>
-        </div>
+	        </script>
+	    </div>
 		<div id = "notif-wrapper">
 			<h1 id = "notif"></h1>
 		</div>
