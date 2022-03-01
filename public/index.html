@@ -62,12 +62,21 @@
 				const button = document.getElementById("play");
 
 				button.addEventListener("click", e => {
+					const html = document.querySelector("html");
 					const ripple = document.createElement("span");
 					const rect = button.getBoundingClientRect();
 
+					var scale;
+
+					if (window.getComputedStyle(html).zoom > 1) {
+						scale = 1;
+					} else {
+						scale = window.getComputedStyle(html).zoom;
+					}
+
 					ripple.setAttribute("class", "ripple");
-					ripple.style.left = `${e.clientX - rect.x}px`;
-					ripple.style.top = `${e.clientY - rect.y}px`;
+					ripple.style.left = `${e.clientX / scale - rect.x}px`;
+					ripple.style.top = `${e.clientY / scale - rect.y}px`;
 					button.prepend(ripple);
 
 					setTimeout(() => {
